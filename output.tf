@@ -1,35 +1,34 @@
-# Output the name of the virtual machine
-output "vm_name" {
-  value       = var.vm_name
-  description = "The name of the virtual machine created using Terraform."
+output "DC_ID" {
+  description = "id of vSphere Datacenter"
+  value       = data.vsphere_datacenter.dc.id
 }
 
-# Output the static IP address of the virtual machine
-output "vm_ip" {
-  value       = var.vm_ip
-  description = "The static IP address assigned to the virtual machine."
+output "ResPool_ID" {
+  description = "Resource Pool id"
+  value       = var.vmrp != "" ? data.vsphere_resource_pool.pool[0].id : var.vmrpid
 }
 
-# Output the network information
-output "vm_network" {
-  value       = var.network_name
-  description = "The network to which the virtual machine is connected."
+output "VM" {
+  description = "VM Names"
+  value       = vsphere_virtual_machine.vm.*.name
 }
 
-# Output the datastore used for the virtual machine
-output "vm_datastore" {
-  value       = var.datastore_name
-  description = "The datastore where the virtual machine is stored."
+output "ip" {
+  description = "default ip address of the deployed VM"
+  value       = vsphere_virtual_machine.vm.*.default_ip_address
 }
 
-# Output the number of CPUs assigned to the virtual machine
-output "vm_cpus" {
-  value       = var.vm_cpus
-  description = "The number of CPUs assigned to the virtual machine."
+output "guest-ip" {
+  description = "all the registered ip address of the VM"
+  value       = vsphere_virtual_machine.vm.*.guest_ip_addresses
 }
 
-# Output the memory assigned to the virtual machine
-output "vm_memory" {
-  value       = var.vm_memory
-  description = "The amount of memory (in MB) assigned to the virtual machine."
+output "uuid" {
+  description = "UUID of the VM in vSphere"
+  value       = vsphere_virtual_machine.vm.*.uuid
+}
+
+output "disk" {
+  description = "Disks of the deployed VM"
+  value       = vsphere_virtual_machine.vm.*.disk
 }
