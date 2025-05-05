@@ -180,7 +180,7 @@ variable "cpu_share_level" {
 variable "cpu_share_count" {
   description = "The number of CPU shares allocated to the virtual machine when the cpu_share_level is custom."
   type        = number
-  default     = 4000
+  default     = 1000
 }
 
 variable "ram_size" {
