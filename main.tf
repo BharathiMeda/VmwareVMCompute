@@ -277,3 +277,35 @@ resource "vsphere_virtual_machine" "vm" {
   shutdown_wait_timeout = var.shutdown_wait_timeout
   force_power_off       = var.force_power_off
 }
+
+resource "null_resource" "create_admin_user" {
+  count = length(var.instances) # Create a resource for each VM
+
+  # Provisioner to create a local admin user on the VM
+  provisioner "remote-exec" {
+    inline = [
+      # Create the local admin user
+      "net user ${var.admin_username} ${var.admin_password} /add",
+      # Add the user to the Administrators group
+      "net localgroup Administrators ${var.admin_username} /add"
+    ]
+
+    # Connection settings for the VM
+    connection {
+      type        = "ssh"
+      host        = data.vsphere_virtual_machine.vm[count.index].guest_ip_addresses[0]
+      user        = "existing-admin-username"
+      password    = "existing-admin-password"
+      timeout     = "2m"
+    }
+  }
+
+  # Add a dependency on the VM resource
+  depends_on = [data.vsphere_virtual_machine.vm]
+}
+
+# Data source to fetch details of each VM
+data "vsphere_virtual_machine" "vm" {
+  count = length(var.instances) # Fetch details for each VM
+  name  = var.instances[count.index]
+}

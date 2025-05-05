@@ -158,7 +158,7 @@ variable "content_library" {
 
 variable "instances" {
   description = "number of instances you want deploy from the template."
-  default     = 1
+  default     = 2
 }
 
 variable "cpu_number" {
@@ -492,4 +492,12 @@ variable "force_power_off" {
   description = "If a guest shutdown failed or timed out while updating or destroying (see shutdown_wait_timeout), force the power-off of the virtual machine."
   type        = bool
   default     = null
+}
+
+variable "admin_username" {
+  default = "NewAdminUser"
+}
+
+variable "admin_password" {
+  default = "YourSecurePassword123!"
 }
