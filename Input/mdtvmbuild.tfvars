@@ -1,25 +1,25 @@
-vsphere_datacenter = "PROD-VI-WLD1-DC"
-vsphere_datastore  = "PROD-VI-WLD1-achi1-w1c2-vsan01"
-vsphere_rp         = "ITASCA"
-vsphere_template   = "Win2022_template"
-vm_network         = "nsx-t-net-10-52-144-0_22"
-vm_dns_domain      = "STGCFRF.MEDTRONIC.COM"
+vsphere_datacenter = ""
+vsphere_datastore  = ""
+vsphere_rp         = ""
+vsphere_template   = ""
+vm_network         = ""
+vm_dns_domain      = ""
 vm_dns_servers     = ["10.48.246.170", "10.20.246.170"]
 vm_gateway         = "10.52.144.1"
 vm_netmask         = 22
-vm_annotation      = "BUILT BY ITASCA MGO"
+vm_annotation      = ""
 vm_thinprov        = true
 vm_disk_size       = 100
-vm_password        = "Mdtpassword@1"
+vm_password        = ""
 vm_folder          = "RtM//ITASCA"
 vm_timezone        = "020"
-ADDomain           = "STGCFRF.MEDTRONIC.COM"
-ADOU               = "OU=Itasca,OU=AM,OU=PC,OU=Servers,DC=STGCFRF,DC=MEDTRONIC,DC=COM"
-ADUser             = "stgent\\SVC-Itasca"
-ADPass             = "KrengelI`$BetterThanTheHulk123"
-vsphere_user       = "ent\\sankam5!"
-vsphere_password   = "SidhaarthMani@2025"
-vsphere_server     = "vcf-achi1-w1-vc.corp.medtronic.com"
+ADDomain           = ""
+ADOU               = ""
+ADUser             = ""
+ADPass             = ""
+vsphere_user       = ""
+vsphere_password   = ""
+vsphere_server     = ""
 
 
 
